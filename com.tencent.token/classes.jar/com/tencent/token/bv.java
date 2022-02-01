@@ -761,42 +761,39 @@ public class bv
     {
       public void run()
       {
-        try
+        for (;;)
         {
-          bv.a(bv.this).lock();
-          e locale = bv.a(bv.this, paramLong, paramHandler);
-          Message localMessage = this.c.obtainMessage(3071);
-          localMessage.arg1 = locale.a;
-          localMessage.obj = locale.d;
-          localMessage.sendToTarget();
-          TmsLog.i("CoreCGIManager", "callback sendQueryCaptha(), retcode: " + locale.a);
           try
           {
-            bv.a(bv.this).unlock();
-            return;
+            bv.a(bv.this).lock();
+            locale = bv.a(bv.this, paramLong, paramHandler);
+            localMessage = this.c.obtainMessage(3071);
+            localMessage.arg1 = locale.a;
+            if (locale.a == 0)
+            {
+              localMessage.obj = locale.d;
+              localMessage.sendToTarget();
+              TmsLog.i("CoreCGIManager", "callback sendQueryCaptha(), retcode: " + locale.a);
+            }
           }
           catch (Throwable localThrowable1)
           {
+            e locale;
+            Message localMessage;
+            localThrowable1 = localThrowable1;
             TmsLog.w("CoreCGIManager", localThrowable1.toString());
-            return;
-          }
-          try
-          {
-            bv.a(bv.this).unlock();
-            throw localObject;
-          }
-          catch (Throwable localThrowable4)
-          {
-            for (;;)
+            try
             {
-              TmsLog.w("CoreCGIManager", localThrowable4.toString());
+              bv.a(bv.this).unlock();
+              return;
+            }
+            catch (Throwable localThrowable2)
+            {
+              TmsLog.w("CoreCGIManager", localThrowable2.toString());
+              return;
             }
           }
-        }
-        catch (Throwable localThrowable2)
-        {
-          localThrowable2 = localThrowable2;
-          TmsLog.w("CoreCGIManager", localThrowable2.toString());
+          finally {}
           try
           {
             bv.a(bv.this).unlock();
@@ -807,8 +804,20 @@ public class bv
             TmsLog.w("CoreCGIManager", localThrowable3.toString());
             return;
           }
+          localMessage.obj = locale;
         }
-        finally {}
+        try
+        {
+          bv.a(bv.this).unlock();
+          throw localObject;
+        }
+        catch (Throwable localThrowable4)
+        {
+          for (;;)
+          {
+            TmsLog.w("CoreCGIManager", localThrowable4.toString());
+          }
+        }
       }
     });
   }

@@ -3,8 +3,8 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
         <RelativeLayout android:background="@color/utils_upper_background" android:layout_width="fill_parent" android:layout_height="100.0dip" />
-        <RelativeLayout android:gravity="center_horizontal" android:id="@id/upper_layout" android:background="@color/utils_upper_background" android:layout_width="wrap_content" android:layout_height="100.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="19.0dip">
-            <LinearLayout android:orientation="vertical" android:id="@id/barcode_layout" android:layout_width="@dimen/utils_scan_layout_width" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_alignParentRight="true">
+        <RelativeLayout android:gravity="center_horizontal" android:id="@id/upper_layout" android:background="@color/utils_upper_background" android:layout_width="wrap_content" android:layout_height="100.0dip" android:layout_centerHorizontal="true">
+            <LinearLayout android:orientation="vertical" android:id="@id/barcode_layout" android:visibility="gone" android:layout_width="@dimen/utils_scan_layout_width" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:layout_alignParentRight="true">
                 <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/verifypage_btn_qr_normal" android:scaleType="fitXY" />
                 <TextView android:textSize="@dimen/text_size_13" android:textColor="@color/barcode_scan_text_blue" android:gravity="center" android:layout_width="@dimen/utils_scan_layout_width" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/barcode" />
             </LinearLayout>

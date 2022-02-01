@@ -292,9 +292,9 @@ public class h
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 7
+    //   1: astore 8
     //   3: aconst_null
-    //   4: astore 8
+    //   4: astore 7
     //   6: aconst_null
     //   7: astore 9
     //   9: iconst_0
@@ -319,13 +319,13 @@ public class h
     //   50: aload_2
     //   51: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: invokevirtual 369	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: astore 11
+    //   57: astore 10
     //   59: new 363	java/io/File
     //   62: dup
-    //   63: aload 11
+    //   63: aload 10
     //   65: invokespecial 372	java/io/File:<init>	(Ljava/lang/String;)V
-    //   68: astore 10
-    //   70: aload 10
+    //   68: astore 11
+    //   70: aload 11
     //   72: invokevirtual 375	java/io/File:exists	()Z
     //   75: istore 5
     //   77: iload 5
@@ -347,7 +347,7 @@ public class h
     //   108: aload_1
     //   109: invokevirtual 381	java/lang/Exception:printStackTrace	()V
     //   112: return
-    //   113: aload 10
+    //   113: aload 11
     //   115: invokevirtual 384	java/io/File:mkdirs	()Z
     //   118: pop
     //   119: new 356	java/lang/StringBuilder
@@ -355,7 +355,7 @@ public class h
     //   123: invokespecial 357	java/lang/StringBuilder:<init>	()V
     //   126: ldc_w 386
     //   129: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: aload 11
+    //   132: aload 10
     //   134: invokevirtual 361	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   137: invokevirtual 369	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   140: invokestatic 390	com/tencent/token/global/g:a	(Ljava/lang/String;)V
@@ -529,7 +529,7 @@ public class h
     //   473: astore_1
     //   474: aconst_null
     //   475: astore 6
-    //   477: aload 8
+    //   477: aload 7
     //   479: astore_2
     //   480: aload 6
     //   482: ifnull +8 -> 490
@@ -546,7 +546,7 @@ public class h
     //   502: invokevirtual 381	java/lang/Exception:printStackTrace	()V
     //   505: goto -7 -> 498
     //   508: astore_1
-    //   509: aload 8
+    //   509: aload 7
     //   511: astore_2
     //   512: goto -32 -> 480
     //   515: astore 7
@@ -564,7 +564,7 @@ public class h
     //   536: astore 6
     //   538: aconst_null
     //   539: astore_1
-    //   540: aload 7
+    //   540: aload 8
     //   542: astore_2
     //   543: goto -98 -> 445
     //   546: astore_2
@@ -572,7 +572,7 @@ public class h
     //   549: astore_1
     //   550: aload_2
     //   551: astore 6
-    //   553: aload 7
+    //   553: aload 8
     //   555: astore_2
     //   556: goto -111 -> 445
     // Local variable table:
@@ -586,14 +586,14 @@ public class h
     //   25	504	6	localObject1	Object
     //   536	12	6	localException1	Exception
     //   551	1	6	str1	String
-    //   1	1	7	localObject2	Object
-    //   434	8	7	localException2	Exception
+    //   4	1	7	localObject2	Object
+    //   434	76	7	localException2	Exception
     //   515	5	7	localObject3	Object
-    //   525	29	7	localObject4	Object
-    //   4	506	8	localObject5	Object
+    //   525	6	7	localObject4	Object
+    //   1	553	8	localObject5	Object
     //   7	376	9	str2	String
-    //   68	110	10	localFile	File
-    //   57	76	11	str3	String
+    //   57	121	10	str3	String
+    //   68	46	11	localFile	File
     // Exception table:
     //   from	to	target	type
     //   86	94	107	java/lang/Exception
